@@ -1,3 +1,6 @@
+
+@import "./variables.scss";
+
 html {
   height: 100%;
 }
@@ -10,4 +13,57 @@ body {
 }
 .ml-10 {
   margin-left: 10px;
+}
+
+.field {
+  margin: 10px 0;
+  label {
+    display: block;
+    margin: 0 0 5px 0;
+  }
+  input,
+  textarea {
+    width: 100%;
+    margin: 0em;
+    outline: none;
+    font-size: 1em;
+    padding: 0.67857143em 1em;
+    border-radius: 6px;
+    border: 1px solid $grey_color;
+    box-shadow: 0 0 1px 4px $grey_color_lt;
+    box-sizing: border-box;
+    &::placeholder {
+      color: $grey_color;
+    }
+  }
+  .info {
+    visibility: hidden;
+  }
+  &.error {
+    input,
+    textarea {
+      border-color: $emphasize_color;
+      background-color: lighten($color: $emphasize_color, $amount: 48);
+    }
+    .info {
+      visibility: visible;
+      color: $emphasize_color;
+    }
+  }
+  .input-wrapper {
+    position: relative;
+  }
+  .fields-group {
+    position: absolute;
+    bottom: 0;
+    input {
+      border: 0;
+      box-shadow: none;
+      background-color: transparent;
+    }
+    span {
+      line-height: 40px;
+      margin: 0 10px;
+    }
+  }
 }
