@@ -106,30 +106,33 @@ h1.logo {
   .menu {
     display: block;
     float: left;
-    margin: 0 10px;
+    margin: 0 10px 0 30px;
     padding: 0;
     height: 100%;
     li {
       list-style: none;
       display: block;
       float: left;
-      width: 150px;
       height: 100%;
       line-height: 40px;
       position: relative;
       text-align: right;
-      padding: 0 20px 0 0;
+      padding: 0 30px 0 0;
+      margin: 0 25px 0 0;
       font-size: 14px;
       font-weight: bold;
       &::after {
         content: "";
-        width: 20px;
+        width: 30px;
         height: 40px;
         display: block;
         position: absolute;
         right: 0;
         top: 0;
         background-image: url(~@/assets/arrow-down.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        opacity: 0.3;
       }
     }
   }
@@ -151,7 +154,7 @@ h1.logo {
     float: left;
     width: 30px;
     height: 30px;
-    padding: 0 15px;
+    padding: 0 20px 0 15px;
     position: relative;
     i {
       border-radius: 50%;
@@ -166,12 +169,15 @@ h1.logo {
     &::after {
       content: "";
       width: 20px;
-      height: 40px;
+      height: 30px;
       display: block;
       position: absolute;
       right: 0;
       top: 0;
       background-image: url(~@/assets/arrow-down.svg);
+      background-repeat: no-repeat;
+      background-position: right center;
+      opacity: 0.3;
     }
   }
 }
