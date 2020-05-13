@@ -12,7 +12,7 @@
       .colunm
         .card
           .card-title ACTIVITIES
-          .card-body
+          .card-body.no-padding
             ul.activities
               li(
                 v-for="(c, idx) in activities"
@@ -23,25 +23,45 @@
                   img(:src="c.logo")
                 .col-body
                   h5
-                    span {{ c.company }}
-                    span(v-if="c.replaced") replaced
+                    span.b {{ c.company }}
+                    span(v-if="c.replaced") &nbsp;replaced
                   h6(v-if="c.desc")
                     span Microsoft
                     span on 1 property
 
       .spacer
       .colunm
-        .card
+        .card.mb-15
           .card-title SIMILAR COMPANIES
-          .card-body PP
-            //- ul
-            //-   li ok
+          .card-body
+            ul
+              li(
+                v-for="(c, idx) in similar"
+                :key="idx"
+              )
+                .col-logo
+                  img(:src="c.logo")
+                .col-body.middle.ml-10
+                  h6 {{ c.name }}
+        .card.mb-15
+          .card-title COMPANY SPEND HISTORY
+          .card-body
         .card
           .card-title COMPANY SPEND HISTORY
-          .card-body PP
-        .card
-          .card-title COMPANY SPEND HISTORY
-          .card-body PP
+          .card-body
+            ul
+              li(
+                v-for="(c, idx) in spend"
+                :key="idx"
+              )
+                .col-logo
+                  img(:src="c.logo")
+                .col-body.middle.ml-10
+                  h5
+                    span.b {{ c.title }}
+                  h6
+                    span Microsoft spend on product $
+                    span {{ c.money }}
 </template>
 
 <script>
@@ -104,6 +124,28 @@ export default {
           company: "Microsoft launched M-Cloud",
           replaced: false,
           desc: false
+        }
+      ],
+      similar: [
+        {
+          logo: require("@/assets/logo_2.svg"),
+          name: "Amazon Web Services (AWS)"
+        },
+        {
+          logo: require("@/assets/logo-copy.svg"),
+          name: "Oracle Corporation"
+        }
+      ],
+      spend: [
+        {
+          logo: require("@/assets/logo-copy-3.svg"),
+          title: "Amazon Web Services (AWS)",
+          money: "500,000"
+        },
+        {
+          logo: require("@/assets/logo_2.svg"),
+          title: "Oracle Corporation",
+          money: "300,000"
         }
       ]
     };
@@ -183,14 +225,38 @@ export default {
         font-weight: bold;
         border-bottom: 1px solid $grey_color;
       }
+      .card-body {
+        padding: 15px;
+        ul {
+          padding: 0;
+          margin: 0;
+          li {
+            display: flex;
+          }
+        }
+        &.no-padding {
+          padding: 0;
+        }
+        .col-body {
+          h5,
+          h6 {
+            margin: 0;
+          }
+          h5 span.b {
+            color: $primary_color;
+          }
+          &.middle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+        }
+      }
     }
     .activities {
-      padding: 0;
-      margin: 0;
       li {
         padding: 15px 10px;
         font-size: 14px;
-        display: flex;
         border-bottom: 1px solid $grey_color;
         .col-time {
           width: 30%;
@@ -198,14 +264,7 @@ export default {
         .col-logo {
           margin: 0 10px;
         }
-        .col-body {
-          h5, h6 {
-            margin: 0;
-          }
-        }
-        // .col-time, .col-logo, .col-body {
 
-        // }
         &:last-child {
           border-bottom: 0;
         }
