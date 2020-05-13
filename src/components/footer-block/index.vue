@@ -58,8 +58,9 @@ footer {
           width: 30px;
           position: absolute;
           right: 0;
-          top: 0;
+          bottom: 0;
           text-align: center;
+          font-size: 8px;
         }
         &:last-child {
           padding: 0;
